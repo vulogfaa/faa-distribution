@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Beta App Redirect</title>
+  <script>
+    fetch('latest.json')
+      .then(response => response.json())
+      .then(data => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(userAgent)) {
+          window.location.href = data.android;
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          window.location.href = data.ios;
+        } else {
+          document.body.innerHTML = '<p>Please open this page on an Android or iOS device.</p>';
+        }
+      });
+  </script>
+</head>
+<body>
+  <p>Redirecting you to the latest FAA build…</p>
+</body>
+</html>
