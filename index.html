@@ -1,24 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Beta App Redirect</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beta App Download</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 2em;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 0.2em;
+    }
+
+    .version {
+      font-size: 1em;
+      color: #777;
+      margin-bottom: 1.5em;
+    }
+
+    .button-group {
+      margin: 1.5em 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      margin: 0.5em;
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .button:hover {
+      background-color: #005fbd;
+    }
+
+    .env-label {
+      font-weight: bold;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
+    }
+
+    .note {
+      margin-top: 2em;
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>Download the Latest Beta App</h1>
+  <div class="version" id="version-info"></div>
+
+  <div id="download-buttons"></div>
+
+  <div class="note">
+    Choose your platform and environment below.
+  </div>
+
   <script>
     fetch('latest.json')
       .then(response => response.json())
       .then(data => {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        if (/android/i.test(userAgent)) {
-          window.location.href = data.android;
-        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          window.location.href = data.ios;
-        } else {
-          document.body.innerHTML = '<p>Please open this page on an Android or iOS device.</p>';
-        }
+        const container = document.getElementById('download-buttons');
+        const versionDiv = document.getElementById('version-info');
+
+        versionDiv.innerText = `Staging: v${data.version?.staging ?? 'n/a'} | Production: v${data.version?.production ?? 'n/a'}`;
+
+        const renderButtons = (envName, envData) => {
+          const label = document.createElement('div');
+          label.className = 'env-label';
+          label.innerText = envName.charAt(0).toUpperCase() + envName.slice(1);
+          container.appendChild(label);
+
+          const group = document.createElement('div');
+          group.className = 'button-group';
+
+          const androidBtn = document.createElement('a');
+          androidBtn.href = envData.android;
+          androidBtn.className = 'button';
+          androidBtn.innerText = 'Download for Android';
+
+          const iosBtn = document.createElement('a');
+          iosBtn.href = envData.ios;
+          iosBtn.className = 'button';
+          iosBtn.innerText = 'Download for iOS';
+
+          group.appendChild(androidBtn);
+          group.appendChild(iosBtn);
+          container.appendChild(group);
+        };
+
+        renderButtons('staging', data.staging);
+        renderButtons('production', data.production);
+      })
+      .catch(error => {
+        document.getElementById('download-buttons').innerHTML = '<p>Error loading build info.</p>';
+        console.error('Failed to load latest.json:', error);
       });
   </script>
-</head>
-<body>
-  <p>Redirecting you to the latest FAA build…</p>
 </body>
 </html>
