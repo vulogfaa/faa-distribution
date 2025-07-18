@@ -5,58 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beta App Download</title>
   <style>
+    :root {
+      --blue: #007aff;
+      --blue-dark: #005fbd;
+      --gray: #f9f9f9;
+      --gray-dark: #e0e0e0;
+      --text-dark: #333;
+      --text-light: #777;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      text-align: center;
-      padding: 2em;
+      background-color: var(--gray);
+      color: var(--text-dark);
+      padding: 2em 1em;
+      max-width: 900px;
+      margin: auto;
     }
 
     h1 {
-      font-size: 1.8em;
-      margin-bottom: 0.2em;
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 0.3em;
     }
 
     .version {
-      font-size: 1em;
-      color: #777;
-      margin-bottom: 1.5em;
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 2em;
+    }
+
+    .env-section {
+      background-color: white;
+      padding: 1.5em;
+      margin-bottom: 2em;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .env-title {
+      font-weight: bold;
+      font-size: 1.3em;
+      margin-bottom: 1em;
+      border-left: 4px solid var(--blue);
+      padding-left: 0.5em;
     }
 
     .button-group {
-      margin: 1.5em 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
     }
 
     .button {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
       padding: 0.8em 1.5em;
-      margin: 0.5em;
-      background-color: #007aff;
+      background-color: var(--blue);
       color: white;
-      border: none;
       border-radius: 6px;
       text-decoration: none;
       font-size: 1em;
-      cursor: pointer;
       transition: background-color 0.2s ease;
     }
 
     .button:hover {
-      background-color: #005fbd;
+      background-color: var(--blue-dark);
     }
 
-    .env-label {
-      font-weight: bold;
-      margin-top: 2em;
-      margin-bottom: 0.5em;
-      font-size: 1.1em;
+    .button img {
+      width: 20px;
+      height: 20px;
     }
 
     .note {
-      margin-top: 2em;
+      text-align: center;
       font-size: 0.9em;
       color: #999;
+    }
+
+    @media (max-width: 500px) {
+      .button {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -66,9 +100,7 @@
 
   <div id="download-buttons"></div>
 
-  <div class="note">
-    Choose your platform and environment above.
-  </div>
+  <div class="note">Choose the version and platform you want to install.</div>
 
   <script>
     fetch('latest.json')
@@ -80,10 +112,12 @@
         versionDiv.innerText = `Staging: v${data.version?.staging ?? 'n/a'} | Production: v${data.version?.production ?? 'n/a'}`;
 
         const renderButtons = (envName, envData) => {
-          const label = document.createElement('div');
-          label.className = 'env-label';
-          label.innerText = envName.charAt(0).toUpperCase() + envName.slice(1);
-          container.appendChild(label);
+          const section = document.createElement('div');
+          section.className = 'env-section';
+
+          const title = document.createElement('div');
+          title.className = 'env-title';
+          title.innerText = `${envName.charAt(0).toUpperCase() + envName.slice(1)} Build`;
 
           const group = document.createElement('div');
           group.className = 'button-group';
@@ -91,16 +125,18 @@
           const androidBtn = document.createElement('a');
           androidBtn.href = envData.android;
           androidBtn.className = 'button';
-          androidBtn.innerText = 'Download for Android';
+          androidBtn.innerHTML = `<img src="https://img.icons8.com/ios-filled/50/ffffff/android-os.png"/> Android`;
 
           const iosBtn = document.createElement('a');
           iosBtn.href = envData.ios;
           iosBtn.className = 'button';
-          iosBtn.innerText = 'Download for iOS';
+          iosBtn.innerHTML = `<img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png"/> iOS`;
 
           group.appendChild(androidBtn);
           group.appendChild(iosBtn);
-          container.appendChild(group);
+          section.appendChild(title);
+          section.appendChild(group);
+          container.appendChild(section);
         };
 
         renderButtons('staging', data.staging);
