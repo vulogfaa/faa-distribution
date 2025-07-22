@@ -1,11 +1,11 @@
 {
   "version": {
-    "staging": "3.8.0-staging",
+    "staging": "3.8.1-staging",
     "production": "3.8.0"
   },
   "staging": {
-    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/10d2e8433151841a/public-install-page/00e6db1e2ddf60358ce5ede62e899e4e",
-    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/e9f5790da10eb171/public-install-page/056c3277bb8de2d28749be0f51568952"
+    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/9cab04460964d8fa/public-install-page/efdbf7ce173e5d9dac1fc2324a22a522",
+    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/1eba5ad5cc57164c/public-install-page/b488e86771e339ff6729e3f6d94ed15c"
   },
   "production": {
     "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/c91e42c577054d0e/public-install-page/3e092d00fe67c80fe38ca8c39884beb7",
@@ -13,10 +13,10 @@
   },
   "changelog": {
     "staging": [
-      "Bugs fixes and performance improvements"
+      "Several bug fixes and performance improvements"
     ],
     "production": [
-      "Bugs fixes and performance improvements"
+      "Several bug fixes and performance improvements"
     ]
   }
 }
