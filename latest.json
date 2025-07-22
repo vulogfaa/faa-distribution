@@ -1,15 +1,15 @@
 {
   "version": {
     "staging": "3.8.1-staging",
-    "production": "3.8.0"
+    "production": "3.8.1"
   },
   "staging": {
     "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/9cab04460964d8fa/public-install-page/efdbf7ce173e5d9dac1fc2324a22a522",
     "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/1eba5ad5cc57164c/public-install-page/b488e86771e339ff6729e3f6d94ed15c"
   },
   "production": {
-    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/c91e42c577054d0e/public-install-page/3e092d00fe67c80fe38ca8c39884beb7",
-    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/bf5d929e7b8b4671/public-install-page/691d8e9bebfcff91a84f29d339200cd1"
+    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/a4a52cbb887a2c99/public-install-page/f9e78ce0960b3f83759dfcc8699c9b1e",
+    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/e61a1b084f058f43/public-install-page/9ba67f9ee521c26b5cfa837595b70c8b"
   },
   "changelog": {
     "staging": [
