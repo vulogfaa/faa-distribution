@@ -1,15 +1,15 @@
 {
   "version": {
-    "staging": "3.8.4-staging",
-    "production": "3.8.4"
+    "staging": "3.9.0-staging",
+    "production": "3.9.0"
   },
   "staging": {
-    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/1db1fc2db0d59224/public-install-page/3a234671ad8e9dce934168f3c4994e63",
-    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/1e09a910b85b5552/public-install-page/558d73fee98415163070f55eccf52239"
+    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/53b99f054f752ee6/public-install-page/d77cc63f20cf277f2927e68b48a208e2",
+    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/58382ed0f55bb731/public-install-page/55b13fb996f78598a251c4054a61e45f"
   },
   "production": {
-    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/537cc958b28d65f6/public-install-page/0acb55610344eabb990aaa0bd593c718",
-    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/7299af567e657c8b/public-install-page/52db56ecadb0fbbf61089182f6a6aede"
+    "ios": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/4e44d38985059dee/public-install-page/f163d07a67afd3973c39c9dae28b1720",
+    "android": "https://app.bitrise.io/app/f882985579c3109a/installable-artifacts/bc29ed6600358189/public-install-page/01ea8574c66bb6b22a4f2667f904b302"
   },
   "changelog": {
     "staging": [
